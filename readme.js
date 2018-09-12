@@ -3,7 +3,7 @@ const fetch = require('node-fetch');
 const path = require('path');
 
 // Funcion encargada de obtener la ruta absoluta
-const checkRute = (ruta) =>{
+const checkRute = (ruta) => {
   const rute = (path.isAbsolute(ruta) === true) ? ruta : path.resolve(ruta);
   console.log(rute);
 };
@@ -12,28 +12,21 @@ checkRute('./README.md');
 // Funcion encargada de leer y obtener los links del readme
 const readFile = () => {
   fs.readFile('README.md', 'utf-8', callback = (err, md) => {
-    if (err) {
-      console.log('Tienes un error, verifica');
-    } else {
-      // const data = md;
-      const regExp = /(http:\/\/|https:\/\/|www\.)[^\s][^)]+/g;
-      const results = md.match(regExp);
-      runArray(results);
-      onlyLinks(results);
-      // console.log(results);
-      // console.log(onlyLinks(results));
-    }
+    const readLink = err ? 'Tienes un error, verifica' : md.match(/(http:\/\/|https:\/\/|www\.)[^\s][^)]+/g);
+    // console.log(readLink);
+    onlyLinks(readLink);
+    runArray(readLink);
   });
 };
 readFile();
 
 // Funcion encargada de mostrar los links como lineas de texto plano 
-const onlyLinks = (results) => {
+const onlyLinks = (readFile) => {
   let onlyTxt = '';
-  for (let x = 0; x < results.length; x++) {
-    onlyTxt += results[x] + '\n';
+  for (let x = 0; x < readFile.length; x++) {
+    onlyTxt += readFile[x] + '\n';
   }
-  // console.log(onlyTxt);
+  console.log(onlyTxt);
   return onlyTxt;
 };
 
