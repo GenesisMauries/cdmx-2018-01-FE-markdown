@@ -1,5 +1,3 @@
+#! / usr / bin / env node
 
-
-const [,, ...args] = process.argv;
-
-console.log(`Hey you ${args}`);
+const documenT = require('./readme');

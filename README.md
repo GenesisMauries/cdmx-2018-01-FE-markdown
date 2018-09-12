@@ -1,6 +1,6 @@
 # Prueba de lectura
 
-Este es un ejercico para verificar si he aprendido algo de lo que he leido en estas ultimas 100 horas ininterrumpidas (LOL)
+Este es un ejercico para verificar si he aprendido algo de lo que he leido en estas ultimas 300 horas ininterrumpidas (LOL)
 
 ## Links de mis traumas
 - [Melendi](https://www.melendioficial.com/) 

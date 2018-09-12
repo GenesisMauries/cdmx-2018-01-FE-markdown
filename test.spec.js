@@ -3,20 +3,24 @@ let util = require('./readme.js').default; // Trae el archivo que se debe testea
 describe('readFile is a function', () =>{
   it('readFile ', ()=>{
     expect(true).toBe(true);
-    // expect espera que lo que esta entre parentesis sea igual a toBe y sus parentesis
   });
 });
 
 describe('runArray is a function', () =>{
   it('runArray ', ()=>{
     expect(true).toBe(true);
-    // expect espera que lo que esta entre parentesis sea igual a toBe y sus parentesis
+    // expect(runArray instanceof Array).toBe(true);
   });
 });
 
 describe('onlyLinks is a function', () =>{
   it('onlyLinks ', ()=>{
     expect(true).toBe(true);
-    // expect espera que lo que esta entre parentesis sea igual a toBe y sus parentesis
+  });
+});
+
+describe('linkObjet is a function', () =>{
+  it('linkObjet ', ()=>{
+    expect(true).toBe(true);
   });
 });

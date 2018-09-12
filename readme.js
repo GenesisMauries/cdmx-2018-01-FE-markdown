@@ -1,16 +1,11 @@
-#! / usr / bin / env node
 const fs = require('fs');
 const fetch = require('node-fetch');
 const path = require('path');
 
 // Funcion encargada de obtener la ruta absoluta
 const checkRute = (ruta) =>{
-  if (path.isAbsolute(ruta) === true) {
-    console.log(ruta);
-  } else {
-    const newRute = path.resolve(ruta);
-    console.log(newRute);
-  } 
+  const rute = (path.isAbsolute(ruta) === true) ? ruta : path.resolve(ruta);
+  console.log(rute);
 };
 checkRute('./README.md');
 
@@ -20,9 +15,9 @@ const readFile = () => {
     if (err) {
       console.log('Tienes un error, verifica');
     } else {
-      const data = md;
+      // const data = md;
       const regExp = /(http:\/\/|https:\/\/|www\.)[^\s][^)]+/g;
-      const results = data.match(regExp);
+      const results = md.match(regExp);
       runArray(results);
       onlyLinks(results);
       // console.log(results);
@@ -42,23 +37,26 @@ const onlyLinks = (results) => {
   return onlyTxt;
 };
 
-
 // Funcion encargada de iterar el array y obtener las promesas
-const runArray = (results) => {
-  let newArray = [];
+const runArray = (results) => {  
   for (let i = 0; i <= results.length; i++) {
     fetch(results[i]).then((res) => {
-      newArray.push({
+      linkObjet({
         href: res.url,
         status: res.status,
+        text: res.statusText
       });
-      // console.log(newArray);
     });
   }
+};
+
+const linkObjet = (link) =>{
+  console.log(link.href, link.status, link.text);
 };
 
 module.exports = {
   readFile,
   runArray,
-  onlyLinks
+  onlyLinks,
+  linkObjet
 };
