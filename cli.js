@@ -1,3 +1,6 @@
-#! / usr / bin / env node
+#!/usr/bin/env node
 
-const documenT = require('./readme');
+const [,, ...args] = process.argv;
+
+console.log(`Hello word ${args}`);
+

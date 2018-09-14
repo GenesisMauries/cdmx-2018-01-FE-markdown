@@ -6,19 +6,20 @@ const path = require('path');
 const checkRute = (ruta) => {
   const rute = (path.isAbsolute(ruta) === true) ? ruta : path.resolve(ruta);
   console.log(rute);
+  return rute;
 };
-checkRute('./README.md');
 
 // Funcion encargada de leer y obtener los links del readme
-const readFile = () => {
-  fs.readFile('README.md', 'utf-8', callback = (err, md) => {
+const readFile = (path) => {
+  fs.readFile(path, 'utf-8', err = (err, md) => {
     const readLink = err ? 'Tienes un error, verifica' : md.match(/(http:\/\/|https:\/\/|www\.)[^\s][^)]+/g);
     // console.log(readLink);
     onlyLinks(readLink);
     runArray(readLink);
+    return readLink;
   });
 };
-readFile();
+readFile(checkRute('./README.md'));
 
 // Funcion encargada de mostrar los links como lineas de texto plano 
 const onlyLinks = (readFile) => {
@@ -26,20 +27,22 @@ const onlyLinks = (readFile) => {
   for (let x = 0; x < readFile.length; x++) {
     onlyTxt += readFile[x] + '\n';
   }
-  console.log(onlyTxt);
+  // console.log(onlyTxt);
   return onlyTxt;
 };
 
 // Funcion encargada de iterar el array y obtener las promesas
 const runArray = (results) => {  
   for (let i = 0; i <= results.length; i++) {
-    fetch(results[i]).then((res) => {
-      linkObjet({
-        href: res.url,
-        status: res.status,
-        text: res.statusText
+    fetch(results[i])      
+      .catch(error=> error)
+      .then((res) => {
+        linkObjet({
+          href: res.url,
+          status: res.status,
+          text: res.statusText
+        });
       });
-    });
   }
 };
 
