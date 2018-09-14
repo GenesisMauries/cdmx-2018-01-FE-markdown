@@ -4,3 +4,5 @@ const [,, ...args] = process.argv;
 
 console.log(`Hello word ${args}`);
 
+
+// const documenT = require('./readme');
